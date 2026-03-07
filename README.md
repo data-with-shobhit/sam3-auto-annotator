@@ -138,9 +138,8 @@ Project_Sam/
 git clone https://github.com/YOUR_USERNAME/sam3-auto-annotator.git
 cd sam3-auto-annotator
 
-# 2. Create .env file with your HuggingFace token
-echo 'HF_TOKEN=hf_your_token_here' > .env
-
+# 2. Create .env file with your HuggingFace token and Log Level
+echo -e "HF_TOKEN=hf_your_token_here\nLOG_LEVEL=INFO" > .env
 # 3. Install dependencies
 uv sync
 # or: pip install -r requirements.txt

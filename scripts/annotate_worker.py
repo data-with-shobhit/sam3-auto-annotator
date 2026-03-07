@@ -127,4 +127,4 @@ if __name__ == "__main__":
         # Fallback to old mode (single batch)
         process_batch(args.images_json, args.prompts_json, args.output_res)
     else:
-        print("Usage: --worker_config <file>")
+        log.error("Usage: --worker_config <file>")

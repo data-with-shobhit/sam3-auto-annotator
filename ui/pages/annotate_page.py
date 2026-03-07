@@ -475,7 +475,7 @@ def render_annotate_page():
         st.info(f"{len(st.session_state.selected_images)} total images selected for dataset")
         
         # Always show Next button
-        if st.button("Next → Organize Dataset", type="primary", use_container_width=True):
+        if st.button("Next -> Organize Dataset", type="primary", use_container_width=True):
             # If nothing selected, assume Select ALL
             if len(st.session_state.selected_images) == 0:
                  st.info("No selection made. Auto-selecting ALL annotated images...")

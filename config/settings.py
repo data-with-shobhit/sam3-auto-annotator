@@ -18,6 +18,7 @@ LOGS_DIR.mkdir(exist_ok=True)
 DEFAULT_CONFIDENCE = 0.3
 IMAGES_PER_PAGE = 12
 SUPPORTED_VIDEO_FORMATS = ['.mp4', '.avi', '.mov', '.mkv']
+SUPPORTED_IMAGE_FORMATS = ['.jpg', '.jpeg', '.png', '.webp']
 
 # Dataset Split Defaults
 DEFAULT_TRAIN_SPLIT = 70

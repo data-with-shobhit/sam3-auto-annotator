@@ -136,9 +136,9 @@ def render_organize_page():
     if st.session_state.get('dataset_ready', False):
         st.markdown("---")
         col1, col2 = st.columns(2)
-        if col1.button("Next → Summary", type="secondary", use_container_width=True):
+        if col1.button("Next -> Summary", type="secondary", use_container_width=True):
             st.session_state.page = 'summary'
             st.rerun()
-        if col2.button("Next → Train Model", type="primary", use_container_width=True):
+        if col2.button("Next -> Train Model", type="primary", use_container_width=True):
             st.session_state.page = 'train'
             st.rerun()
