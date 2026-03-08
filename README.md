@@ -10,6 +10,12 @@ Traditional object detection workflows require **thousands of hours of manual bo
 
 **This pipeline replaces manual annotation with natural language.** Instead of drawing boxes, you type: *"yellow excavator on a construction site"* — and SAM3 auto-detects and labels every instance across thousands of frames in minutes.
 
+### How It Impacts the Business
+- **Accelerated Time-to-Market**: Slashes the data preparation phase from weeks to hours, allowing rapid deployment of computer vision models.
+- **Massive Cost Reduction**: Eliminates the need for expensive third-party manual labeling services ($5k–$50k per dataset) and endless SaaS subscription fees.
+- **Data Sovereignty & Security**: Keeps highly proprietary business data (e.g., manufacturing lines, defense footage, medical imaging) completely on-premise, bypassing the security risks of uploading to external SaaS platforms.
+- **Agile Model Iteration**: Allows for same-day retraining on edge cases. If a deployed model fails in a new environment, new data can be collected, auto-annotated, and a fixed model can be deployed within hours, not weeks.
+
 ---
 
 ## Architecture
@@ -239,6 +245,12 @@ This project is under **active development** with ongoing bug fixes and feature 
 - [ ] **SAM3 Video Tracking** — Temporal consistency across video frames using SAM3's video mode
 - [ ] **Evaluation Dashboard** — Confusion matrices, per-class AP curves, and model comparison tools
 - [ ] **Next.js Frontend Migration** — Replace Streamlit with a full Next.js + FastAPI stack for a production-grade UI with better state management, real-time WebSocket updates, and deployment flexibility
+- [ ] **Layer 2: CLIP — Label Correction / Niche Annotation**
+  - **Take cropped images** from SAM3 bounding boxes.
+  - **Define candidate labels** (e.g. *"Kurkure Solid Masti"*, *"Kurkure Tangy Tomato"*, *"Lays Chips"*).
+  - **Use CLIP similarity matching** to compare each crop to candidate text labels and assign the highest probability label.
+  - **Update Annotations** by replacing generic SAM3 labels with high-precision, niche variant labels.
+  - **Purpose**: High precision differentiation of visually similar products via zero-shot classification, requiring zero extra training.
 
 ---
 
