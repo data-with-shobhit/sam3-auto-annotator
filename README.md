@@ -15,6 +15,7 @@ Traditional object detection workflows require **thousands of hours of manual bo
 - **Massive Cost Reduction**: Eliminates the need for expensive third-party manual labeling services ($5k–$50k per dataset) and endless SaaS subscription fees.
 - **Data Sovereignty & Security**: Keeps highly proprietary business data (e.g., manufacturing lines, defense footage, medical imaging) completely on-premise, bypassing the security risks of uploading to external SaaS platforms.
 - **Agile Model Iteration**: Allows for same-day retraining on edge cases. If a deployed model fails in a new environment, new data can be collected, auto-annotated, and a fixed model can be deployed within hours, not weeks.
+- **Retail & Quick Commerce Scaling (e.g., Swiggy Instamart, Zomato, Blinkit)**: Radically speeds up product cataloging and visual auditing. Instead of manually annotating thousands of new SKUs every week, teams can use zero-shot prompts to detect brand-new packaging designs instantly on warehouse shelves.
 
 ---
 
