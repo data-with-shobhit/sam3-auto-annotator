@@ -222,6 +222,6 @@ def render_upload_page():
         st.info(f"{len(st.session_state.extracted_frames)} frames ready for annotation")
         
         st.markdown("---")
-        if st.button("Next -> Configure Prompts", type="primary", use_container_width=True):
+        if st.button("Next → Configure Prompts", type="primary", use_container_width=True):
             st.session_state.page = 'prompts'
             st.rerun()

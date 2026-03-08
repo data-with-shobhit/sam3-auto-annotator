@@ -61,7 +61,7 @@ def render_sample_test_page():
         st.session_state.sample_results
         and st.session_state.sample_prompt_fingerprint != current_prompt_fingerprint
     ):
-        st.warning("Prompts have changed since the last sample test. Re-running...")
+        st.warning("⚠️ Prompts have changed since the last sample test. Re-running...")
         st.session_state.sample_results = {}
         st.session_state.force_sample_test = True
         st.rerun()
@@ -126,7 +126,7 @@ def render_sample_test_page():
     else:
         col_status, col_rerun = st.columns([4, 1])
         col_status.success(f"Sample test completed for {len(st.session_state.sample_results)} video(s)")
-        if col_rerun.button("Re-run", use_container_width=True):
+        if col_rerun.button("🔄 Re-run", use_container_width=True):
             st.session_state.sample_results = {}
             st.session_state.sample_prompt_fingerprint = None
             st.session_state.force_sample_test = True
@@ -201,7 +201,7 @@ def render_sample_test_page():
         st.markdown("---")
         st.info("Adjust thresholds per video above. When satisfied, proceed to Full Annotation.")
         
-        if st.button("Next -> Full Annotation", type="primary", use_container_width=True):
+        if st.button("Next → Full Annotation", type="primary", use_container_width=True):
             st.session_state.page = 'annotate'
             st.rerun()
 

@@ -4,15 +4,7 @@ __pycache__/
 .DS_Store
 projects/
 runs/
-logs/
-
-# Model weights (large files)
-*.pt
-*.onnx
 *.engine
-*.deb
+
 # Environment variables
 .env
-
-# Virtual environment
-.venv/

@@ -60,8 +60,29 @@ if 'trained_model_path' not in st.session_state:
 # ============================================================================
 # SIDEBAR NAVIGATION
 # ============================================================================
-from ui.components.sidebar import render_sidebar
-render_sidebar()
+st.sidebar.title("Pipeline Steps")
+pages = {
+    'upload': '1. Upload & Extract',
+    'prompts': '2. Configure Prompts',
+    'sample_test': '3. Sample Test',
+    'annotate': '4. Full Annotation',
+    'organize': '5. Organize Dataset',
+    'summary': '6. Summary',
+    'train': '7. Train Model'
+}
+
+for key, label in pages.items():
+    if st.sidebar.button(label, use_container_width=True):
+        st.session_state.page = key
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("### Current Status")
+project_name = st.session_state.project_manager.project_name if st.session_state.project_manager else "None"
+st.sidebar.metric("Project", project_name)
+st.sidebar.metric("Frames", len(st.session_state.extracted_frames))
+st.sidebar.metric("Prompts", len(st.session_state.text_prompts))
+st.sidebar.metric("Annotated", len(st.session_state.annotations))
+st.sidebar.metric("Selected", len(st.session_state.selected_images))
 
 # ============================================================================
 # MAIN CONTENT HEADER

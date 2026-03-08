@@ -14,9 +14,6 @@ SAM3_PATH = Path(__file__).parent.parent / "sam3"
 if SAM3_PATH.exists():
     sys.path.insert(0, str(SAM3_PATH))
 
-from config.logging_config import setup_logging
-log = setup_logging("annotation_manager")
-
 from sam3.model_builder import build_sam3_image_model
 from sam3.model.sam3_image_processor import Sam3Processor
 
@@ -31,18 +28,18 @@ class SAM3Annotator:
     def initialize(self):
         """Load SAM3 model (call once and cache)"""
         if self.model is None:
-            log.info("Loading SAM3 model...")
+            print("Loading SAM3 model...")
             self.model = build_sam3_image_model()
             
             # Explicitly move to CUDA if available
             if torch.cuda.is_available():
-                log.info("CUDA is available. moving model to GPU...")
+                print("CUDA is available. moving model to GPU...")
                 self.model = self.model.cuda()
             else:
-                log.info("CUDA not found. Keeping model on CPU.")
+                print("CUDA not found. Keeping model on CPU.")
                 
             self.processor = Sam3Processor(self.model)
-            log.info(f"Model loaded on {self.model.device}")
+            print(f"Model loaded on {self.model.device}")
         return self.model, self.processor
     
     def annotate_single_image(self, image_path: str, text_prompts: List[str], 
@@ -242,15 +239,15 @@ def annotate_batch(frame_paths: List[str], text_prompts: List[str],
         else:
             batch_size = 1  # CPU fallback
     
-    log.info(f"Spawning {num_models} SAM3 model(s) for parallel processing")
-    log.info(f"Using batch size: {batch_size} (GPU VRAM: {gpu_mem_gb:.1f}GB)" if torch.cuda.is_available() else "Using CPU (batch_size=1)")
+    print(f"🚀 Spawning {num_models} SAM3 model(s) for parallel processing")
+    print(f"Using batch size: {batch_size} (GPU VRAM: {gpu_mem_gb:.1f}GB)" if torch.cuda.is_available() else "Using CPU (batch_size=1)")
     
     results = {}
     total = len(frame_paths)
     
     if num_models > 1:
         # Multi-model parallel processing with ProcessPoolExecutor
-        log.info(f"Using ProcessPoolExecutor with {num_models} workers")
+        print(f"Using ProcessPoolExecutor with {num_models} workers")
         results = _process_with_multiple_models(
             frame_paths, text_prompts, score_threshold, 
             num_models, batch_size, progress_callback
@@ -306,7 +303,7 @@ def _worker_process_chunk(chunk_frames: List[str], text_prompts: List[str],
                 result = annotator.annotate_single_image(frame_path, text_prompts, score_threshold)
                 chunk_results[frame_path] = result
             except Exception as e:
-                log.error(f"Error processing {frame_path}: {e}")
+                print(f"Error processing {frame_path}: {e}")
                 chunk_results[frame_path] = {
                     'detections': [],
                     'annotated_image': None,
@@ -314,7 +311,7 @@ def _worker_process_chunk(chunk_frames: List[str], text_prompts: List[str],
                 }
         return chunk_results
     except Exception as e:
-        log.error(f"Critical worker error: {e}")
+        print(f"Critical worker error: {e}")
         return {}
 
 
@@ -351,7 +348,7 @@ def _process_with_multiple_models(frame_paths: List[str], text_prompts: List[str
     # specialized start method for CUDA
     ctx = multiprocessing.get_context('spawn')
     
-    log.info(f"Starting {len(model_chunks)} worker processes...")
+    print(f"🚀 Starting {len(model_chunks)} worker processes...")
     
     with ProcessPoolExecutor(max_workers=num_models, mp_context=ctx) as executor:
         futures = [
@@ -368,9 +365,9 @@ def _process_with_multiple_models(frame_paths: List[str], text_prompts: List[str
                 if progress_callback:
                     progress_callback(processed_count, len(frame_paths))
             except Exception as e:
-                log.error(f"Error in process chunk: {e}")
+                print(f"Error in process chunk: {e}")
                 import traceback
-                log.error(traceback.format_exc())
+                traceback.print_exc()
     
     return all_results
 
@@ -405,7 +402,7 @@ def _process_batch_parallel(annotator: SAM3Annotator,
                 result = future.result()
                 batch_results[frame_path] = result
             except Exception as e:
-                log.error(f"Error processing {frame_path}: {e}")
+                print(f"Error processing {frame_path}: {e}")
                 batch_results[frame_path] = {
                     'detections': [],
                     'annotated_image': None,

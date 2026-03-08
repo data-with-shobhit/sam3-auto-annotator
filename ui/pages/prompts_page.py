@@ -104,6 +104,6 @@ def render_prompts_page():
     # Next button
     if st.session_state.text_prompts and st.session_state.extracted_frames:
         st.markdown("---")
-        if st.button("Next -> Sample Test", type="primary", use_container_width=True):
+        if st.button("Next → Sample Test", type="primary", use_container_width=True):
             st.session_state.page = 'sample_test'
             st.rerun()
