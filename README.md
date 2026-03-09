@@ -36,25 +36,28 @@ Traditional object detection workflows require **thousands of hours of manual bo
                     on GPU       (Multi-   (YOLO     (Background
                                  Process)   Format)   Subprocess)
 ```
+---
+
 ## Project Screenshots
 
-<p float="left">
-  <img src="assets/img1.png" width="32%" />
-  <img src="assets/img2.png" width="32%" />
-  <img src="assets/img3.png" width="32%" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img1.jpg" width="30%">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img2.jpg" width="30%">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img3.jpg" width="30%">
 </p>
 
-<p float="left">
-  <img src="assets/img4.png" width="32%" />
-  <img src="assets/img5.png" width="32%" />
-  <img src="assets/img6.png" width="32%" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img4.jpg" width="30%">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img5.jpg" width="30%">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img6.jpg" width="30%">
 </p>
 
-<p float="left">
-  <img src="assets/img7.png" width="32%" />
-  <img src="assets/img8.png" width="32%" />
-  <img src="assets/img9.png" width="32%" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img7.jpg" width="30%">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img8.jpg" width="30%">
+  <img src="https://raw.githubusercontent.com/data-with-shobhit/sam3-auto-annotator/main/assets/img9.jpg" width="30%">
 </p>
+
 
 ---
 
